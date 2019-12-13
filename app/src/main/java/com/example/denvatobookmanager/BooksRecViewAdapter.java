@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class BooksRecViewAdapter extends RecyclerView.Adapter<BooksRecViewAdapter.ViewHolder>
@@ -51,6 +53,10 @@ public class BooksRecViewAdapter extends RecyclerView.Adapter<BooksRecViewAdapte
                 Toast.makeText(context,books.get(position).getName()+" Selected ",Toast.LENGTH_SHORT).show();
             }
         });
+        Glide.with(context)
+                .asBitmap()
+                .load(books.get(position).getImageUrl())
+                .into(holder.bookImage);
     }
 
     @Override
